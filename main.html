@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Classic theme - jQuery Mobile Demos</title>
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+	<link rel="stylesheet" href="theme-classic.css">
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.4.5.min.css">
+	<link rel="shortcut icon" href="icon.png">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/Parking.js"></script>
+
+    <script type="text/javascript" src="js/qr/qrcode.js"></script>
+    <script type="text/javascript" src="js/qr/sample.js"></script>
+
+    <script>
+        var cod_user;
+
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+            return results[1] || 0;
+        }
+
+        $(document).ready(function () {
+            notificaciones();
+            setInterval("notificaciones();", 20000);
+            $("#alertas").hide();
+            menuAPP('inicio.html');
+            cod_user = $.urlParam('cod_user');
+        });
+    </script>	
+</head>
+<body>
+
+<div data-role="page" id="testpage">
+	
+    <div data-role="header">
+		<h1>Cisc Parking</h1>
+		<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-active">Salir</a>
+        <div data-role="navbar">
+			<ul>
+				<li><a href="#" class="ui-btn-active ui-state-persist" onclick="menuAPP('inicio.html')">Inicio</a></li>
+				<li><a href="#" onclick="menuAPP('historico.html')">Historico</a></li>
+				<li><a href="#" onclick="menuAPP('reservas.html')">Reservaciones</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+    
+    <button id="alertas" class="ui-shadow-icon ui-btn ui-shadow ui-corner-all ui-btn-b">
+    </button>
+
+    <div id="contenerdor"  class="ui-content" role="main" style="background-color:#FFF; padding:0px; overflow:auto;">
+    </div><!-- /contenedor -->
+    
+
+    <ul data-role="listview">
+		<li><a href="#"><img src="images/notificacion.png"/><h2>Notificaciones</h2><p>Las Ultimas Notificaciones</p></a></li>
+	</ul>
+
+    <div id="notificaciones">
+    </div>
+    
+	
+</div><!-- /page -->
+</body>
+</html>

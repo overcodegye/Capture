@@ -1,0 +1,15 @@
+<script>
+    $(document).ready(function () {
+        graficos_cars_cli();
+        clearInterval(intervalos);
+        intervalos = setInterval("graficos_cars_cli();", 10000);
+    });
+</script>	
+<!-- // IMAGEN PARQUEO -->
+<div style="position:relative; margin: 0 auto; width:100%; background-color:#FFF">
+    <img src="images/parqueo.jpg" style="width:500px; "/>   
+    <div id="div_reservaciones">
+    </div>
+</div>
+<!-- // IMAGEN PARQUEO END -->
+
