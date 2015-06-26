@@ -132,7 +132,7 @@
             alert('Failed because: ' + message);
         }
 
-		function guardarPhoto(){
+		function guardarFoto(){
 			var img = document.getElementById('smallImage');
 			var lati = document.getElementById('valueLatitud');
 			var imageURI = img.src;
@@ -141,15 +141,19 @@
 		}
     </script>
   </head>
-  <body>
+  <body onload="createTable()">
+	<div id="capFoto">
+		<button data-role="button" onclick="capturePhoto();">Capture Photo</button> <br>
+		<!--<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+		<button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+		<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
+	</div>
 	
-    <button onclick="capturePhoto();">Capture Photo</button> <br>
-    <!--<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
 	
 	<br>
-	<button onclick="guardarFoto();">Guardar</button>
+	<div id="guardarFoto">
+		<button data-role="button" onclick="guardarFoto();">Guardar</button>
+	</div>
 	<br>
 	<br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
