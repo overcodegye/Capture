@@ -6,6 +6,7 @@
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" href="theme-classic.css">
+	<script type="text/javascript" src="js/helper.js"> </script>
 	
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -128,6 +129,8 @@
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
 	
+	<br>
+	<button onclick="initDatabase();">Iniciar</button>
 	<br>
 	<br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
