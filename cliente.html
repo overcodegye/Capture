@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gestión Cliente</title>
+	<link href="css/estilo.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.icons-1.4.5.min.css">
+	<link rel="stylesheet" href="theme-classic.css">
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.4.5.min.css">
+	<link rel="shortcut icon" href="favicon.gif">
+	<script src="js/jquery.js"></script>
+	
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+		var pictureSource;   // picture source
+        var destinationType; // sets the format of returned value
+
+        // Wait for device API libraries to load
+        //
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            pictureSource = navigator.camera.PictureSourceType;
+            destinationType = navigator.camera.DestinationType;
+        }
+		
+		// Called when a photo is successfully retrieved
+        //
+        function onPhotoDataSuccess(imageData) {
+            // Uncomment to view the base64-encoded image data
+            // console.log(imageData);
+
+            // Get image handle
+            //
+            var smallImage = document.getElementById('smallImage');
+
+            // Unhide image elements
+            //
+            smallImage.style.display = 'block';
+
+            // Show the captured photo
+            // The inline CSS rules are used to resize the image
+            //
+            smallImage.src = "data:image/jpeg;base64," + imageData;
+        }
+
+        // Called when a photo is successfully retrieved
+        //
+        function onPhotoURISuccess(imageURI) {
+            // Uncomment to view the image file URI
+            // console.log(imageURI);
+
+            // Get image handle
+            //
+            var largeImage = document.getElementById('largeImage');
+
+            // Unhide image elements
+            //
+            largeImage.style.display = 'block';
+
+            // Show the captured photo
+            // The inline CSS rules are used to resize the image
+            //
+            largeImage.src = imageURI;
+        }
+
+        // A button will call this function
+        //
+        function capturePhoto() {
+            // Take picture using device camera and retrieve image as base64-encoded string
+            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
+                destinationType: destinationType.DATA_URL
+            });
+			alert("Capturo!");
+        }
+
+        // A button will call this function
+        //
+        function capturePhotoEdit() {
+            // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+            navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
+                destinationType: destinationType.DATA_URL
+            });
+        }
+
+        // A button will call this function
+        //
+        function getPhoto(source) {
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+                destinationType: destinationType.FILE_URI,
+                sourceType: source
+            });
+        }
+
+        // Called if something bad happens.
+        //
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+		
+		$(document).on('pagebeforeshow', '#index', function(){ 
+			for(i = 0; i < 30; i++) {
+				$(".example-wrapper div .iscroll-content").append('<a data-role="button">Button ' + i + '</a>');
+			}
+			$('[data-role="content"]').trigger('create');
+			$(".example-wrapper").iscrollview("refresh");
+		});
+	</script>
+  </head>
+  <body>
+  <div data-role="page" id="listCliente">
+  
+	<div data-role="header" data-position="inline">
+		<h1>Cliente</h1>
+		<a href="index.html" class="ui-btn ui-corner-all ui-shadow ui-btn-active">Salir</a>
+        <div data-role="navbar">
+			<ul>
+				<li><a href="#" class="ui-btn-active ui-state-persist" onclick="menuAPP('index.html')">Inicio</a></li>
+				<li><a href="#" onclick="menuAPP('historico.html')">Pedidos</a></li>
+				<li><a href="#" onclick="menuAPP('reservas.html')">Gestiones</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" >
+		<button class="ui-shadow-icon ui-btn ui-shadow ui-corner-all ui-btn-b" onclick="capturePhoto();">Capture Photo</button> <br>
+		<button class="ui-shadow-icon ui-btn ui-shadow ui-corner-all ui-btn-b" onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+		
+		<form class="ui-filterable">
+			<input id="filter-input" data-type="search">
+		</form>
+		
+		<div class="example-wrapper" class="scrollable" data-iscroll >
+			<ul data-role="listview" data-inset="true" data-input="#filter-input" data-theme="c" >
+	            <li data-role="list-divider">
+                    <img src="images/Default.jpg" alt="" border="0" style="margin-left:1%; margin-top:1%"/>
+					<span style="margin-left:20%;" >
+					Cliente: Jose Gavica
+		            <p style="margin-left:20%;">Direccion 1: Cdla. Vernaza Norte mz 2418 v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" data-role="none" data-theme="b" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" data-role="none" data-theme="b" href="#" onclick="capturePhoto();">Capturar Posicion</a></p>
+                    </span>
+	            </li>
+				
+                <li data-role="list-divider">
+                    <img src="images/Default.jpg" alt=""  border="0" style="margin-left:1%; margin-top:1%"/>
+                    <span style="margin-left:20%;">
+					Cliente: Jose Cordova
+		            <p style="margin-left:20%;">Direccion 1: Cdla. Urdensa Norte v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" href="cliente.html">Capturar Posicion</a></p>
+					</span>
+	            </li>
+				
+                <li data-role="list-divider">
+		            <img src="images/Default.jpg" alt=""  border="0" style="margin-left:1%; margin-top:1%"/>
+					<span style="margin-left:20%;">
+                    Cliente: Jose Gavica
+		            <p style="margin-left:20%;">Direccion 1: Cdla. Kenneddy Norte 2418 v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" href="cliente.html">Capturar Posicion</a></p>
+					</span>
+	            </li>
+				
+                <li data-role="list-divider">
+		            <img src="images/Default.jpg" alt=""  border="0" style="margin-left:1%; margin-top:1%"/>
+                    <span style="margin-left:20%;">Cliente: Ginger Mejia
+		            <p style="margin-left:20%;">Direccion 1: Cdla. La Atarazana v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" href="cliente.html">Capturar Posicion</a></p>
+					<span>
+	            </li>
+				<li data-role="list-divider">
+                    <img src="images/Default.jpg" alt="" border="0" style="margin-left:1%; margin-top:1%"/>
+					<span style="margin-left:20%;" >
+					Cliente: Jose Gavica
+		            <p style="margin-left:20%;">Direccion 1: Cdla. Vernaza Norte mz 2418 v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" data-role="none" data-theme="b" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" data-role="none" data-theme="b" href="cliente.html">Capturar Posicion</a></p>
+                    </span>
+	            </li>
+				
+                <li data-role="list-divider">
+                    <img src="images/Default.jpg" alt=""  border="0" style="margin-left:1%; margin-top:1%"/>
+                    <span style="margin-left:20%;">
+					Cliente: Jose Cordova
+		            <p style="margin-left:20%;">Direccion 1: Cdla. Urdensa Norte v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" href="cliente.html">Capturar Posicion</a></p>
+					</span>
+	            </li>
+				
+                <li data-role="list-divider">
+		            <img src="images/Default.jpg" alt=""  border="0" style="margin-left:1%; margin-top:1%"/>
+					<span style="margin-left:20%;">
+                    Cliente: Jose Gavica
+		            <p style="margin-left:20%;">Direccion 1: Cdla. Kenneddy Norte 2418 v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" href="cliente.html">Capturar Posicion</a></p>
+					</span>
+	            </li>
+				
+                <li data-role="list-divider">
+		            <img src="images/Default.jpg" alt=""  border="0" style="margin-left:1%; margin-top:1%"/>
+                    <span style="margin-left:20%;">Cliente: Ginger Mejia
+		            <p style="margin-left:20%;">Direccion 1: Cdla. La Atarazana v2</p>
+					<p style="margin-left:20%;">Opciones: <a class="textoBlanco" href="cliente.html">Ingresar Pedido</a> |  <a class="textoBlanco" href="cliente.html">Capturar Posicion</a></p>
+					<span>
+	            </li>
+			</ul>
+		</div>
+    </div>
+	
+	<div data-role="footer" data-position="fixed" class="pie">
+        Derechos reservados Soyoda 2015
+    </div>
+   </div>
+  </body>
+</html>	

@@ -1,0 +1,364 @@
+﻿@font-face {
+    font-family: "All_Star_Resort";
+    src: url(fuentes/All_Star_Resort.ttf) format("truetype");
+}
+
+*{ margin: 0; padding: 0; border: 0; }
+
+body {
+	margin: 0;
+}
+
+.banner
+{
+    width:100%;
+    min-height:70px;
+    float:none;
+}
+
+.superior
+{
+    width:100%;
+    min-height:45px;
+   
+}
+
+.logo
+{
+    background-image:url('../images/logo3.png');   
+    background-repeat:no-repeat;
+    width:260px;
+    height: 60px;
+    float:left;
+}
+
+.Titulo
+{
+    float:left;
+    text-align:center;
+    font-family:All_Star_Resort;
+    font-size:2em;
+    padding-top:10px;
+}
+
+#loginDiv
+{
+    float:right;
+    padding-top:8px;
+    padding-right:20px;
+}
+
+#loginDiv a
+{
+    padding-right:10px;
+    font-family:Arial,Helvetica,Verdana,sans-serif;
+    color: #FFFFFF;
+    
+}
+
+#loginDiv span
+{
+    padding-right:10px;
+    font-family:Arial,Helvetica,Verdana,sans-serif;
+    font-weight:bolder;
+    FONT-SIZE: 10.5pt;
+    color: #FFFFFF;
+}
+
+.pie
+{
+    text-align:center;
+}
+
+.cont_index
+{
+	/*margin-left:10%;*/
+	margin-top:20px;
+	width:90%;
+}
+
+h1
+{
+    text-align:center;
+    font-size:20px;
+    padding-bottom:20px;
+    color:#005da6;
+}
+
+h2 
+{
+	FONT-SIZE: 9pt; 
+	COLOR: #1655A4; 
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; 
+	TEXT-ALIGN: center;
+	margin-left:5%;
+}
+
+.fuente
+{
+    font-size:1.25em;
+    margin-left:10%;
+}
+
+/*div#container {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+}*/
+
+/*div[data-role="header"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+div[data-role="content"] {
+	position: absolute;
+	top: 41px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}*/
+
+div[data-role="listview"]  h3{
+	margin-left:25%;
+}
+
+.scrollable {
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+	/* iOS specific fix, don't use it on Android devices */
+.scrollable > * {
+	-webkit-transform: translateZ(0px);
+}
+
+.hdrtop{
+    font-family : verdana, arial, helvetica, sans-serif;
+    font-size : 9.5pt;
+    font-weight : bold;
+    color : #FFFFFF;
+    background-color: #000000; /* E0EEFE  66CCCC*/
+    /*text-align: center;*/
+    vertical-align: bottom;
+}
+
+.textoTbSub
+{
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 10.5pt;
+	color:#000000;
+}
+
+.textoTbSubNegrita
+{
+	font-family : verdana, arial, helvetica, sans-serif;
+    font-size : 10.5pt;
+    color : #000000;
+    background-color: #eeeeee;
+    vertical-align: top;
+	font-weight:bold;	
+}
+
+.tdrcont
+{
+    border:#1655a4 thin solid;
+}
+
+.tableSub
+{
+	border-collapse: collapse;
+	border-right: #1655a4 thin solid;
+	border-top: #1655a4 thin solid;
+	border-left: #1655a4 thin solid;
+	border-bottom: #1655a4 thin solid;
+}
+
+.centrado
+{
+    margin-left:10%;
+}
+
+#lblTotal
+{
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 11.5pt;
+	/*color:#5EBB46;*/
+	font-weight:bolder;
+	text-align:justify;
+	margin-right:10%;
+	float:right;
+}
+
+#lblMes
+{
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	FONT-SIZE: 12.5pt;
+	color:black;
+	font-weight:bolder;
+	text-align:justify;
+	margin-left:10%;
+	
+}
+
+.divSessionUser
+{
+	color:Blue;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10pt;
+	height:16px;
+	width:100%;/*450*/
+	text-align:center;	
+	padding-top:2px;	
+	border:0 solid black;
+	font-weight:lighter;
+	background-color:White;
+
+}
+
+.divOut
+{
+	/*padding-top:4px;*/
+	height:21px;
+	/*width:346px;*/
+	width:100%;
+	text-align:right;
+	float:right;
+	/*margin-left:270px;*/
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+/*
+*    When screen is smaller than 720px
+*/
+@media only screen and (max-width:720px)
+{
+    .Titulo
+    {
+        text-align:center;
+        font-family:All_Star_Resort;
+        font-size:2em;
+        margin-left: 15%;
+        float:none;
+        clear:both;
+    }   
+    
+    .banner
+    {
+        width:100%;
+        min-height:50px;
+        float:none;
+        clear:both;
+    }
+}
+
+/*
+*    When screen is smaller than 520px
+*/
+@media only screen and (max-width:520px)
+{
+    .Titulo
+    {
+        text-align:center;
+        font-family:All_Star_Resort;
+        font-size:2em;
+        margin-left: 15%;
+        float:none;
+        clear:both;
+    }
+    
+    .banner
+    {
+        width:100%;
+        min-height:40px;
+        float:none;
+        clear:both;
+    }
+}
+
+
+/*
+*
+*    When screen is smaller than 480px
+*/
+@media only screen and (max-width:480px)
+{
+    .Titulo
+    {
+        text-align:center;
+        font-family:All_Star_Resort;
+        font-size:1.75em;
+        margin-left: 15%;
+        float:none;
+        clear:both;
+    }
+    
+    .banner
+    {
+        width:100%;
+        min-height:60px;
+        float:none;
+        clear:both;
+    }
+}
+
+/*
+*
+*    When screen is smaller than 320px
+*/
+@media only screen and (max-width:320px)
+{
+    .Titulo
+    {
+        text-align:center;
+        font-family:All_Star_Resort;
+        font-size:1.25em;
+        margin-left: 15%;
+        float:none;
+        clear:both;
+    }
+    
+    .banner
+    {
+        width:100%;
+        min-height:60px;
+        float:none;
+        clear:both;
+    }
+}
+
+@media ( min-width: 40em ) {
+	/* Show the table header rows and set all cells to display: table-cell */
+	.my-custom-breakpoint td,
+	.my-custom-breakpoint th,
+	.my-custom-breakpoint tbody th,
+	.my-custom-breakpoint tbody td,
+	.my-custom-breakpoint thead td,
+	.my-custom-breakpoint thead th {
+		display: table-cell;
+		margin: 0;
+	}
+	/* Hide the labels in each cell */
+	.my-custom-breakpoint td .ui-table-cell-label,
+	.my-custom-breakpoint th .ui-table-cell-label {
+		display: none;
+	}
+}
+
+
+--------------------------
+
+.ui-content {
+    padding: 0 !important;
+}
+ 
+.ui-listview {
+    margin: 0 !important;
+}
+ 
+.example-wrapper, .example-wrapper div.iscroll-scroller {
+    width: 100% !important;
+}
