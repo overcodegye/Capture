@@ -18,13 +18,13 @@ var deleteVisitaClienteTABLA = "DELETE FROM TBL_VISITA_CLIENTE WHERE id=?";*/
 var dropClienteTABLA = "DROP TABLE TBL_CLIENTE";
 var dropVisitaClienteTABLA = "DROP TABLE TBL_VISITA_CLIENTE";
  
-//var db = openDatabase("dbapcli", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
+var db = openDatabase("dbapcli", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
  
 var dataset;
 
 var DataType;
  
-/*function initDatabase()  // Function Call When Page is ready.
+function initDatabase()  // Function Call When Page is ready.
 {
     try {
         if (!window.openDatabase)  // Check browser is supported SQLite or not.
@@ -46,7 +46,7 @@ var DataType;
         }
         return;
     }
-}*/
+}
  
 function createTable()  // Function for Create Table in SQLite.
 {

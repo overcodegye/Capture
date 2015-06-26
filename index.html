@@ -7,6 +7,7 @@
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 	<link rel="stylesheet" href="theme-classic.css">
 	<script type="text/javascript" src="js/helper.js"> </script>
+	<link rel="stylesheet" href="theme-classic.css">
 	
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -21,7 +22,7 @@
         // device APIs are available
         //
         function onDeviceReady() {
-			var db = openDatabase("dbapcli.sqlite3", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
+			//var db = openDatabase("dbapcli.sqlite3", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
 			
             pictureSource = navigator.camera.PictureSourceType;
             destinationType = navigator.camera.DestinationType;
@@ -141,7 +142,7 @@
 		}
     </script>
   </head>
-  <body onload="createTable()">
+  <body onload="initDatabase()">
 	<div id="capFoto">
 		<button data-role="button" onclick="capturePhoto();">Capture Photo</button> <br>
 		<!--<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
@@ -151,9 +152,9 @@
 	
 	
 	<br>
-	<div id="guardarFoto">
+	<!--<div id="guardarFoto">
 		<button data-role="button" onclick="guardarFoto();">Guardar</button>
-	</div>
+	</div>-->
 	<br>
 	<br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
