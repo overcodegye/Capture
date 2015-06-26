@@ -18,13 +18,13 @@ var deleteVisitaClienteTABLA = "DELETE FROM TBL_VISITA_CLIENTE WHERE id=?";*/
 var dropClienteTABLA = "DROP TABLE TBL_CLIENTE";
 var dropVisitaClienteTABLA = "DROP TABLE TBL_VISITA_CLIENTE";
  
-var db = openDatabase("dbapcli", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
+//var db = openDatabase("dbapcli", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
  
 var dataset;
 
 var DataType;
  
-function initDatabase()  // Function Call When Page is ready.
+/*function initDatabase()  // Function Call When Page is ready.
 {
     try {
         if (!window.openDatabase)  // Check browser is supported SQLite or not.
@@ -46,14 +46,15 @@ function initDatabase()  // Function Call When Page is ready.
         }
         return;
     }
-}
+}*/
  
 function createTable()  // Function for Create Table in SQLite.
 {
     db.transaction(function (tx) { 
-		//tx.executeSql(createClienteTABLA, [], showRecords, onError);
-		//tx.executeSql(createClienteTABLA);
-		showRecords();
+		//tx.executeSql(createClienteTABLA, [], showRecordsClienteTABLA, onError);
+		tx.executeSql(createClienteTABLA);
+		tx.executeSql('insert into TBL_CLIENTE (id, codigointerno, nombres, apellidos, dirfactura, telf1, tipo, fecreg, fecupd, usuariocre, version) values (1, 1, "Manuel", "Palacios Huerta", "cdla los olivos mz 2343", "2485693", "a", "26-06-2015", "26-06-2015", "admin", 1)');
+		showRecordsClienteTABLA();
 		//tx.executeSql(createVisitaClienteTABLA, [], showRecords, onError);
 	});
 }
@@ -136,7 +137,7 @@ function onError(tx, error) // Function for Hendeling Error...
     alert(error.message);
 }
  
-function showRecords() // Function For Retrive data from Database Display records as list
+function showRecordsClienteTABLA() // Function For Retrive data from Database Display records as list
 {
     $("#consulta").html('')
     db.transaction(function (tx) {
