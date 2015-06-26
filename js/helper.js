@@ -32,8 +32,9 @@ function initDatabase()  // Function Call When Page is ready.
             alert('Databases are not supported in this browser.');
         }
         else {
-            //createTable();  // If supported then call Function for create table in SQLite
-			alter('Creo');
+			alert('Creo');
+            createTable();  // If supported then call Function for create table in SQLite
+			
         }
     }
     catch (e) {
@@ -51,7 +52,8 @@ function createTable()  // Function for Create Table in SQLite.
 {
     db.transaction(function (tx) { 
 		//tx.executeSql(createClienteTABLA, [], showRecords, onError);
-		tx.executeSql(createClienteTABLA);
+		//tx.executeSql(createClienteTABLA);
+		showRecords();
 		//tx.executeSql(createVisitaClienteTABLA, [], showRecords, onError);
 	});
 }
@@ -136,15 +138,15 @@ function onError(tx, error) // Function for Hendeling Error...
  
 function showRecords() // Function For Retrive data from Database Display records as list
 {
-    $("#results").html('')
+    $("#consulta").html('')
     db.transaction(function (tx) {
         tx.executeSql(selectClienteTABLA, [], function (tx, result) {
             dataset = result.rows;
             for (var i = 0, item = null; i < dataset.length; i++) {
                 item = dataset.item(i);
-                var linkeditdelete = '<li>' + item['username'] + ' , ' + item['useremail'] + '    ' + '<a href="#" onclick="loadRecord(' + i + ');">edit</a>' + '    ' +
+                var linkeditdelete = '<li>' + item['nombres'] + ' , ' + item['apellidos'] + '    ' + '<a href="#" onclick="loadRecord(' + i + ');">edit</a>' + '    ' +
                                             '<a href="#" onclick="deleteRecord(' + item['id'] + ');">delete</a></li>';
-                $("#results").append(linkeditdelete);
+                $("#consulta").append(linkeditdelete);
             }
         });
     });
