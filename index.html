@@ -30,16 +30,20 @@
 			enableHighAccuracy: true,
 			maximumAge:60000
 			};
-            watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+            //watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
         }
 	
 		// onSuccess Geolocation
         //
         function onSuccess(position) {
             var element = document.getElementById('resultado');
+			
             element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
                             'Longitude: ' + position.coords.longitude + '<br />' +
                             '<hr />' + element.innerHTML;
+							
+			$("#valueLatitud").val(position.coords.latitude);
+			$("#valueLongitud").val(position.coords.longitude);
         }
 		
 		// onError Callback receives a PositionError object
@@ -49,9 +53,14 @@
                 'message: ' + error.message + '\n');
         }
 		
+		//****************************** FOTO CAPTURA *********************************** /
+		
         // Called when a photo is successfully retrieved
         //
         function onPhotoDataSuccess(imageData) {
+		
+			watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+			
             // Uncomment to view the base64-encoded image data
             // console.log(imageData);
 
@@ -123,16 +132,24 @@
             alert('Failed because: ' + message);
         }
 
+		function guardarPhoto(){
+			var img = document.getElementById('smallImage');
+			var lati = document.getElementById('valueLatitud');
+			var imageURI = img.src;
+			alert(lati);
+			alert(imageURI);
+		}
     </script>
   </head>
   <body>
+	
     <button onclick="capturePhoto();">Capture Photo</button> <br>
     <!--<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
 	
 	<br>
-	<button onclick="createTable();">Iniciar</button>
+	<button onclick="guardarFoto();">Guardar</button>
 	<br>
 	<br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
@@ -140,6 +157,8 @@
 	
 	<div id="resultado"> </div>
 	
+	<input type="hidden" id="valueLatitud"/>
+	<input type="hidden" id="valueLongitud"/>
 	<br>
 	<br>
 	<div id="consulta"> </div>
