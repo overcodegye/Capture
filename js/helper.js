@@ -55,7 +55,7 @@ function createTable()  // Function for Create Table in SQLite.
 		tx.executeSql(createClienteTABLA);
 		tx.executeSql(createVisitaClienteTABLA);
 		//tx.executeSql('insert into TBL_CLIENTE (id, codigointerno, nombres, apellidos, dirfactura, telf1, tipo, fecreg, fecupd, usuariocre, version) values (1, 1, "Manuel", "Palacios Huerta", "cdla los olivos mz 2343", "2485693", "a", "26-06-2015", "26-06-2015", "admin", 1)');
-		tx.executeSql('insert into TBL_VISITA_CLIENTE(idcliente, fecreg, tipo, observacion, imagen, latitud, longitud, version) values (1, "26-06-2015", "a", "prueba", "xcsasasdxsxsxsxsx", -2.0824522, -79.9434483, 1)');
+		//tx.executeSql('insert into TBL_VISITA_CLIENTE(idcliente, fecreg, tipo, observacion, imagen, latitud, longitud, version) values (1, "26-06-2015", "a", "prueba", "xcsasasdxsxsxsxsx", -2.0824522, -79.9434483, 1)');
 		showRecordsClienteTABLA();
 		showRecordsVisitaClienteTABLA();
 		//tx.executeSql(createVisitaClienteTABLA, [], showRecords, onError);

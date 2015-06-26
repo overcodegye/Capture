@@ -5,9 +5,9 @@
     <title>Capture Photo</title>
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" href="theme-classic.css">
 	<script type="text/javascript" src="js/helper.js"> </script>
 	<link rel="stylesheet" href="theme-classic.css">
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.4.5.min.css">
 	
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -59,7 +59,7 @@
         //
         function onPhotoDataSuccess(imageData) {
 		
-			watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+			//watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
 			
             // Uncomment to view the base64-encoded image data
             // console.log(imageData);
