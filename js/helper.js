@@ -54,8 +54,10 @@ function createTable()  // Function for Create Table in SQLite.
 		//tx.executeSql(createClienteTABLA, [], showRecordsClienteTABLA, onError);
 		tx.executeSql(createClienteTABLA);
 		tx.executeSql(createVisitaClienteTABLA);
-		tx.executeSql('insert into TBL_CLIENTE (id, codigointerno, nombres, apellidos, dirfactura, telf1, tipo, fecreg, fecupd, usuariocre, version) values (1, 1, "Manuel", "Palacios Huerta", "cdla los olivos mz 2343", "2485693", "a", "26-06-2015", "26-06-2015", "admin", 1)');
+		//tx.executeSql('insert into TBL_CLIENTE (id, codigointerno, nombres, apellidos, dirfactura, telf1, tipo, fecreg, fecupd, usuariocre, version) values (1, 1, "Manuel", "Palacios Huerta", "cdla los olivos mz 2343", "2485693", "a", "26-06-2015", "26-06-2015", "admin", 1)');
+		tx.executeSql('insert into TBL_VISITA_CLIENTE(idcliente, fecreg, tipo, observacion, imagen, latitud, longitud, version) values (1, "26-06-2015", "a", "prueba", "xcsasasdxsxsxsxsx", -2.0824522, -79.9434483, 1)');
 		showRecordsClienteTABLA();
+		showRecordsVisitaClienteTABLA();
 		//tx.executeSql(createVisitaClienteTABLA, [], showRecords, onError);
 	});
 }
@@ -149,6 +151,22 @@ function showRecordsClienteTABLA() // Function For Retrive data from Database Di
                 var linkeditdelete = '<li>' + item['nombres'] + ' , ' + item['apellidos'] + '    ' + '<a href="#" onclick="loadRecord(' + i + ');">edit</a>' + '    ' +
                                             '<a href="#" onclick="deleteRecord(' + item['id'] + ');">delete</a></li>';
                 $("#consulta").append(linkeditdelete);
+            }
+        });
+    });
+}
+
+function showRecordsVisitaClienteTABLA() // Function For Retrive data from Database Display records as list
+{
+    $("#consulta2").html('')
+    db.transaction(function (tx) {
+        tx.executeSql(selectVisitaClienteTABLA, [], function (tx, result) {
+            dataset = result.rows;
+            for (var i = 0, item = null; i < dataset.length; i++) {
+                item = dataset.item(i);
+                var linkeditdelete = '<li>' + item['latitud'] + ' , ' + item['longitud'] + '    ' + '<a href="#" onclick="loadRecord(' + i + ');">edit</a>' + '    ' +
+                                            '<a href="#" onclick="deleteRecord(' + item['id'] + ');">delete</a></li>';
+                $("#consulta2").append(linkeditdelete);
             }
         });
     });
