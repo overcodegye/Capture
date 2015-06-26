@@ -16,14 +16,36 @@
         // Wait for device API libraries to load
         //
         document.addEventListener("deviceready", onDeviceReady, false);
-
+		
         // device APIs are available
         //
         function onDeviceReady() {
             pictureSource = navigator.camera.PictureSourceType;
             destinationType = navigator.camera.DestinationType;
+			
+			var options = { 
+			enableHighAccuracy: true,
+			maximumAge:60000
+			};
+            watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
         }
-
+	
+		// onSuccess Geolocation
+        //
+        function onSuccess(position) {
+            var element = document.getElementById('resultado');
+            element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
+                            'Longitude: ' + position.coords.longitude + '<br />' +
+                            '<hr />' + element.innerHTML;
+        }
+		
+		// onError Callback receives a PositionError object
+        //
+        function onError(error) {
+            alert('code: ' + error.code + '\n' +
+                'message: ' + error.message + '\n');
+        }
+		
         // Called when a photo is successfully retrieved
         //
         function onPhotoDataSuccess(imageData) {
@@ -110,5 +132,8 @@
 	<br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />
+	
+	<div id="resultado"> </div>
+	
   </body>
 </html>
