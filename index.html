@@ -23,7 +23,6 @@
         //
         function onDeviceReady() {
 			//var db = openDatabase("dbapcli.sqlite3", "1.0", "Cliente Soyoda", 200000);  // Open SQLite Database
-			
             pictureSource = navigator.camera.PictureSourceType;
             destinationType = navigator.camera.DestinationType;
 			
@@ -144,7 +143,9 @@
   </head>
   <body onload="initDatabase()">
 	<div id="capFoto">
-		<button data-role="button" onclick="capturePhoto();">Capture Photo</button> <br>
+		<!--<button data-role="button" onclick="capturePhoto();">Capture Photo</button> <br>-->
+		
+		<a class="textoBlanco" data-role="button" href="#" onclick="return capturePhoto();">Capture Photo</a> 
 		<!--<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
 		<button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
 		<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>-->
